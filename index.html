@@ -4,9 +4,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather-app-vanilla-js</title>
+    <title>Simple Weather App</title>
+        <!-- ------------------- Normaliza de acuerdo a los estandares -------------------- -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+
+	    <!-- ------------------- Google fonts -------------------- -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap" rel="stylesheet">
+
+	    <!-- ------------------- Main stylesheet -------------------- -->
+	<link rel="stylesheet" href="styles.css">
+
+        <!-- ------------------- libreria de iconos Fontawesome -------------------- -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    Comenzando con la creacion de app del clima... :D
+    <div class="container">
+        <header>
+            <h1>Agregar localizacion</h1>
+            <form>
+                <label for="search-term">Ingrese el nombre de su ciudad</label>
+                <div class="form-row">
+                    <input type="text" placeholder="Ej: Montevideo" 
+                    name="search-term" id="search-term" autofocus>
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass-location"></i>
+                    </button>
+                </div>
+
+                <p class="form-msg visible"> Mensaje para los usuarios.</p>
+            </form>
+        </header>
+
+        <section>
+            <ul class="cities">
+                <li>
+                    <figure>
+                        <img src="./img/weather/01d.svg" alt="Demo">
+                    </figure>
+                    <div>
+                        <p class="city__conditions"> Soleado</p>
+                        <h3>
+                            <span class="city__name">Montevideo</span>
+                            <span class="city__country">UY</span>
+                        </h3>
+                    </div>
+                </li>
+                <li>
+                    <figure>
+                        <img src="./img/weather/01d.svg" alt="Demo">
+                    </figure>
+                    <div>
+                        <p class="city__conditions"> Soleado</p>
+                        <h3>
+                            <span class="city__name">Montevideo</span>
+                            <span class="city__country">UY</span>
+                        </h3>
+                    </div>
+                </li>
+                <li>
+                    <figure>
+                        <img src="./img/weather/01d.svg" alt="Demo">
+                    </figure>
+                    <div>
+                        <p class="city__conditions"> Soleado</p>
+                        <h3>
+                            <span class="city__name">Montevideo</span>
+                            <span class="city__country">UY</span>
+                        </h3>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer><p><small>Design and code by <a href="https://github.com/TechSergio">Sergio Marquez </a>
+            and <a href="http://www.adipurdila.com">Adi Purdila</a> and <a href="http://georgemartsoukos.com">George Martsoukos</a></small></p></footer>
+        <!-- www.adipurdila.com georgemartsoukos.com -->
+    </div>
+    
+
+    <script src="./app.js"></script>
 </body>
 </html>

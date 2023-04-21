@@ -46,8 +46,14 @@ form.addEventListener("submit", e =>{
                 //Segundo Formato seria el simple, la ciudad.
                 content = cityName
             }
-
             return content === inputVal.toLowerCase()
         })
+        
+        if (filteredArray.length > 0) {
+            msg.textContent = `Ya se desplego el clima para ${filteredArray[0].querySelector(".city__name").textContent} ... puedes ser mas especifico aportando el codigo de la ciudad 🤓`
+            msg.classList.add("visible")
+            form.reset()
+            inputVal.focus()
+        }
     }
 })

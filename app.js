@@ -9,7 +9,7 @@ const apiKey = "4ac6a979dd78a61751c5ff144397fd50"
 
 form.addEventListener("submit", e =>{
     e.preventDefault()
-
+    let agregar = true
     msg.textContent = ""
     msg.classList.remove("visible")
 
@@ -54,48 +54,52 @@ form.addEventListener("submit", e =>{
             msg.classList.add("visible")
             form.reset()
             searchInput.focus()
+            agregar = false
         }
 
     }
-            //ajax
+
+    if (agregar){
+                //ajax
         const url = `http://api.openweathermap.org/data/2.5/forecast?q=${inputVal}&appid=${apiKey}&units=metric`
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
 
-        if (data.cod == '404'){
-            throw new Error(`${data.cod}, ${data.message}`)
-        }
+            if (data.cod == '404'){
+                throw new Error(`${data.cod}, ${data.message}`)
+            }
 
-        const {main, weather} = data.list[0]
-        const {name, country} = data.city
-        const icon = `img/weather/${weather[0]['icon']}.svg`
-        const li = document.createElement('li')
+            const {main, weather} = data.list[0]
+            const {name, country} = data.city
+            const icon = `img/weather/${weather[0]['icon']}.svg`
+            const li = document.createElement('li')
 
-        const markup = `
-        <figure>
-            <img src="./${icon}" alt="${weather[0]['description']}">
-        </figure>
-            <div>
-                <h2>${Math.round(main.temp)}<sup>°C</sup></h2>
-                <p class="city__conditions">${weather[0]['description'].toUpperCase()}</p>
-                <h3>
-                    <span class="city__name">${name}</span>
-                    <span class="city__country">${country}</span>
-                    </h3>
-            </div>
-        `
-        li.innerHTML = markup
-        
-        list.appendChild(li)
-    })
-    .catch(()=> {
-        msg.textContent ="Por favor busca un pais valido"
-        msg.classList.add('visible')
-    })
+            const markup = `
+            <figure>
+                <img src="./${icon}" alt="${weather[0]['description']}">
+            </figure>
+                <div>
+                    <h2>${Math.round(main.temp)}<sup>°C</sup></h2>
+                    <p class="city__conditions">${weather[0]['description'].toUpperCase()}</p>
+                    <h3>
+                        <span class="city__name">${name}</span>
+                        <span class="city__country">${country}</span>
+                        </h3>
+                </div>
+            `
+            li.innerHTML = markup
+            
+            list.appendChild(li)
+        })
+        .catch(()=> {
+            msg.textContent ="Por favor busca un pais valido🤪"
+            msg.classList.add('visible')
+        })
+    }
 
-    msg.textContent= ''
+
     form.reset()
     searchInput.focus()
 })
